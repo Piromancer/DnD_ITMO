@@ -10,6 +10,10 @@
 </h:head>
 <h:body>
     <h:form>
+        <h:commandLink value="Send EMail" action="#{exampleCDI.sendEMail}"/>
+    </h:form>
+
+    <h:form>
         <h:panelGrid columns="2">
             <h:outputText value="Item name: "/>
             <h:inputText value="#{exampleCDI.itemname}" />
