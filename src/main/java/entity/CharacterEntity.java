@@ -1,5 +1,7 @@
 package entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
@@ -18,6 +20,29 @@ public class CharacterEntity {
     private int charactercha;
     private int charecterlevel;
     private boolean characternpc;
+    private String charactersex;
+
+    @Basic
+    @Column(name = "charactersex", nullable = false)
+    public String getCharactersex() {
+        return charactersex;
+    }
+
+    public void setCharactersex(String charactersex) {
+        this.charactersex = charactersex;
+    }
+
+    @Basic
+    @Column(name = "characterrace", nullable = false)
+    public String getCharacterrace() {
+        return characterrace;
+    }
+
+    public void setCharacterrace(String characterrace) {
+        this.characterrace = characterrace;
+    }
+
+    private String characterrace;
 
     @Basic
     @Column(name = "characteruser", nullable = false)
@@ -44,6 +69,7 @@ public class CharacterEntity {
 
     @Basic
     @Column(name = "charactercreationdate", nullable = false)
+    @CreationTimestamp
     public Date getCharactercreationdate() {
         return charactercreationdate;
     }

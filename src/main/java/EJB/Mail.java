@@ -1,31 +1,28 @@
 package EJB;
 
+import utils.SmtpAuthenticator;
+
 import javax.annotation.Resource;
-import javax.ejb.Stateful;
-import javax.ejb.StatefulTimeout;
-import javax.ejb.Stateless;
-import java.util.Properties;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import javax.ejb.Timeout;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage;
 
-
 @Named
-@RequestScoped
-public class Mail {
+@ViewScoped
+@ManagedBean
+public class Mail implements Serializable {
     @Resource(lookup = "EMailME")
     private Session mailSession;
 
 
-    private final String host = "smtp.yandex.ru";
-    private final String user = "DnDTechService";
+    private final String host = "smtp.gmail.com";
+    private final String user = "DnDTechService@gmail.com";
     private final String pass = "dnd1scool";
-    private final String from = "DnDTechService@yandex.ru";
+    private final String from = "DnDTechService@gmail.com";
     private final String subject = "DnD welcomes you!";
     private final String message = "Welcome to our service";
     private final boolean debug  = false;
@@ -40,18 +37,32 @@ public class Mail {
 //                props.put("mail.smtp.port", "587");
 //                props.put("mail.smtp.auth", "true");
 //                props.put("mail.smtp.starttls.required", "true");
-//                mailSession = Session.getDefaultInstance(props, null);
+//                props.put("mail.smtp.password","dnd1scool");
+//                mailSession = Session.getDefaultInstance(props,new SmtpAuthenticator());
 //                mailSession.setDebug(debug);
 //            }
-            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-            MimeMessage msg = new MimeMessage(mailSession);
-            msg.setFrom(new InternetAddress(mailSession.getProperty("mail.from")));
-            InternetAddress[] address = {new InternetAddress(to)};
-            msg.setRecipients(Message.RecipientType.TO, address);
+
+            System.out.println("Send started");
+            Message msg = new MimeMessage(mailSession);
             msg.setSubject(subject);
-            msg.setSentDate(new Date());
             msg.setText(message);
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             Transport.send(msg);
+            System.out.println("Send finished");
+//            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+//            MimeMessage msg = new MimeMessage(mailSession);
+//            msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
+//            msg.addHeader("format", "flowed");
+//            msg.addHeader("Content-Transfer-Encoding", "8bit");
+//            msg.setFrom(new InternetAddress(from));
+//            msg.setReplyTo(InternetAddress.parse(from, false));
+//            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to,false));
+//            msg.setSubject(subject, "UTF-8");
+//            msg.setSentDate(new Date());
+//            msg.setText(message,"UTF-8");
+//            Transport.send(msg);
+//            System.out.println("Message sent");
+
 //            Transport transport = mailSession.getTransport("smtp");
 //            transport.connect(host, user, pass);
 //            transport.sendMessage(msg, msg.getAllRecipients());

@@ -1,0 +1,7 @@
+#magic_gif {
+    opacity: .9;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+}

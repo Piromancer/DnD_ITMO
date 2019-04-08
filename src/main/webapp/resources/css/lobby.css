@@ -1,0 +1,534 @@
+/* Стили для иконок игры */
+.photobox{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.photobox__previewbox{
+    position: relative;
+    overflow: hidden;
+}
+
+.photobox__preview{
+    width: 500px;
+    height: 600px;
+    background-size: cover;
+}
+
+.photobox__previewbox:before{
+    content: "";
+}
+
+/* Появление кнопки для смены изображения */
+
+.photobox .photobox__previewbox:before {
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    background-color: var(--photoboxOverlay, rgba(0, 0, 0, .8));
+    clip-path: polygon(50% 10%, 15% 90%, 85% 90%);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transition: transform calc(var(--photoboxAnimationDuration, .4s) / 2) ease-out,   opacity calc(var(--photoboxAnimationDuration, .4s) / 2) ease-out;
+    will-change: transform;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.photobox:hover .photobox__previewbox:before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(7);
+    transition-delay: calc(var(--photoboxAnimationDuration, .4s) / 2), 0s;
+    transition-duration: var(--photoboxAnimationDuration, .4s);
+}
+
+.photobox .photobox__label{
+    width: 95%;
+    text-align: center;
+
+    font-size: 230%;
+
+    opacity: 0;
+    transition: opacity calc(var(--photoboxAnimationDuration, .4s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .4s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9);
+    will-change: opacity, transform;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    z-index: 3;
+}
+
+.photobox:hover .photobox__label, .photobox:hover .level-label{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition-duration: var(--photoboxAnimationDuration, .4s);
+    transition-delay: calc(var(--photoboxAnimationDuration, .4s) / 2);
+}
+
+/*
+* demo styles for photobox
+*/
+
+.photobox{
+    color: #fff;
+    font-size: 1.5rem;
+    --photoboxOverlay: rgba(1, 188, 198, .3);
+    photoboxAnimationDuration: .5s;
+}
+
+@media screen and (max-width: 480px){
+    .photobox{
+        width: 100%;
+    }
+}
+
+/* Затемнение */
+.shadow-form {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background:rgba(32, 7, 114, 0.4);
+    z-index:50;
+}
+
+
+/* Стили для формы игрока */
+
+.character-list-header{
+    text-align: center;
+    font-size: 55px;
+}
+
+/* Стили для портретов персонажей */
+
+.character-preview{
+    width: 250px;
+    height: 300px;
+    background-size: cover;
+}
+
+/* Стили для значения уровня персонажа */
+
+.level-label{
+    width: 95%;
+    text-align: center;
+
+    font-size: 40px;
+
+    opacity: 0;
+    transition: opacity calc(var(--photoboxAnimationDuration, .4s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9), transform calc(var(--photoboxAnimationDuration, .4s) / 4) cubic-bezier(0.71, 0.05, 0.29, 0.9);
+    will-change: opacity, transform;
+
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    z-index: 3;
+}
+
+/* Стили для формы портретов персонажей */
+#character-list{
+    text-align: center;
+}
+
+#player-form{
+    margin-top: 10%;
+}
+
+#gm-form{
+    margin-top: 10%;
+}
+
+/* Форма персонажа */
+
+#char-avatar{
+    width:300px;
+    height:400px
+}
+
+/* Стили для формы создания игры */
+
+.header-form{
+    font-size: 50px;
+    margin: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px gray,
+    2px 2px powderblue;
+    color: lightsteelblue;
+
+    transition: all 1s;
+}
+
+.header-form-sub{
+    font-size: 40px;
+}
+
+.header-form:hover{
+    text-shadow: 1px 1px white;
+}
+
+.lobby-input-group{
+    color: black;
+    margin: 5px auto;
+    display: inline-block;
+}
+
+
+.lobby-param-row label{
+    font-size: 22px;
+    margin: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px gray,
+    2px 2px powderblue;
+    color: lightsteelblue;
+
+    transition: all 1s;
+}
+
+.lobby-param-row label:hover {
+    text-shadow: 1px 1px white;
+    color: beige;
+}
+
+.header-lobby-param{
+    margin-right: 20%;
+}
+
+.lobby-param-row .header-lobby-param, .lobby-game-param{
+    text-shadow: 1px 1px gray,
+    2px 2px powderblue;
+    color: gray;
+
+    transition: all 1s;
+}
+
+.lobby-param-row .header-lobby-param:hover, .lobby-game-param:hover, .number-label:hover{
+    text-shadow: 1px 1px gray,
+    2px 2px powderblue;
+    color: black;
+
+    transition: all 1s;
+}
+
+.lobby-params{
+    text-align: left;
+
+    margin: 5% 20%;
+}
+
+.lobby-param{
+    float: right;
+}
+
+.lobby-game-param{
+    cursor: pointer;
+    color: midnightblue;
+}
+
+/* Форма иы  */
+
+.game-info{
+    z-index: 2;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin: 5%;
+    /*background: transparent url("img/table.png") round;*/
+}
+
+/* Слайдер для списка доступных игр */
+.lobby-slider{
+    position: relative;
+    width: 90%;
+    overflow: auto;
+    right: 10%;
+    top: 10%;
+    height: 70%;
+}
+
+
+.game-slide{
+    position: relative;
+    width: 60%;
+    height: 200px;
+    margin: 0 30px 30px;
+    /*background-image: url("./img/panel-background.jpg");*/
+    right: -30%;
+}
+
+.game-slide:hover{
+}
+
+.innder-slide{
+    cursor: pointer;
+    position: relative;
+    height: 100%;
+    text-decoration: none;
+    z-index: 10;
+    text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+    user-select: none;
+    padding: 1em 2em;
+    outline: none;
+    border-radius: 3px / 100%;
+    background-image:
+            linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+            linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)),
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)),
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+    background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+    box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+}
+
+/* Стили для кнопки в виде стекла */
+.btn-glass{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    color: #777674;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(100,100,100,.3) 3px 7px 3px;
+    user-select: none;
+    padding: 1em 2em;
+    outline: none;
+    border-radius: 3px / 100%;
+    background-image:
+            linear-gradient(45deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.8), rgba(255,255,255,.0) 70%),
+            linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,.3)),
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+            linear-gradient(to right, rgba(125,125,125,1), rgba(255,255,255,.9) 45%, rgba(125,125,125,.5)),
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5)),
+            linear-gradient(to right, rgba(223,190,170,1), rgba(255,255,255,.9) 45%, rgba(223,190,170,.5));
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+    background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+    box-shadow: rgba(0,0,0,.5) 3px 10px 10px -10px;
+}
+
+.btn-glass:hover, .innder-slide:hover{
+    transition: .5s linear;
+    text-decoration: none;
+    background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+}
+
+.btn-glass:active{
+    top: 148px;
+}
+
+
+.label-under-glass{
+    position: absolute;
+    margin: 22%;
+    z-index: 5;
+    color: beige;
+}
+
+
+/* Cтили для формы создания игры/просмотра игр и  */
+
+#game-descr{
+    background:transparent;
+    border: transparent;
+    font-size: 20px;
+}
+
+.fill-game-form-header{
+    border-bottom: 2px solid;
+}
+
+.form-group{
+    margin: 1em 0;
+    text-align: center;
+}
+
+.stamp-btn{
+    border-radius: 100%;
+    font-size: 24px;
+    border: 0px solid;
+    background: url("./img/stamp1.png");
+    color: rgba(240, 95, 95, 1);
+    background-size: 200px 200px;
+    width: 200px;
+    height: 200px;
+}
+
+.stamp-btn:hover{
+    text-shadow: 1px 1px 2px black, 0 0 1em red;
+    box-shadow: inset -12px -6px 4px -5px  rgba(237, 45, 45, 1);
+}
+
+.stamp-btn1{
+    border-radius: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    border: 0px solid;
+    background: url("./img/pent.png");
+    color: rgba(45, 45, 237, 1);
+    background-size: 190px 190px;
+    width: 190px;
+    height: 190px;
+}
+
+.stamp-btn1:hover{
+    text-shadow: 1px 1px 2px black, 0 0 1em lightseagreen;
+    box-shadow: inset -12px -6px 4px -5px  rgba(22, 22, 233, 1);
+}
+
+.stamp-btn2{
+    border-radius: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    border: 0px solid;
+    background: url("./img/forest.png");
+    color: rgba(45, 237, 45, 1);
+    background-size: 175px 175px;
+    width: 175px;
+    height: 175px;
+}
+
+.stamp-btn2:hover{
+    text-shadow: 1px 1px 2px black, 0 0 1em forestgreen;
+    box-shadow: inset -12px -6px 4px -5px  rgba(22, 233, 22, 1);
+}2
+
+
+/* Выбор количества игроков*/
+input[type='range'] {
+    position: relative;
+    left: 50%;
+    margin-top: 25px;
+    border: solid 0 transparent;
+    border-width: 0 2em;
+
+    width: 32em;
+    height: 1em;
+    border-radius: 3px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: .7;
+    background: linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 1.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 2.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 2.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 1.74223em 4.5em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 6.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 7.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 7.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 6.74223em 4.5em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 11.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 12.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 12.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 11.74223em 4.5em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 16.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 17.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 17.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 16.74223em 4.5em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 21.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 22.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 22.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 21.74223em 4.5em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #d1d0d4 25%, #d1d0d4 75%, rgba(0, 0, 0, 0) 75%) 26.74223em 4.9375em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #f1e7e7 25%, #f1e7e7 75%, rgba(0, 0, 0, 0) 75%) 27.5em 4.9375em, linear-gradient(30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 27.5em 4.5em, linear-gradient(-30deg, rgba(0, 0, 0, 0) 25%, #e8dddd 25%, #e8dddd 75%, rgba(0, 0, 0, 0) 75%) 26.74223em 4.5em;
+    background-repeat: no-repeat;
+    background-size: 0.82027em 1.3125em;
+    -webkit-filter: drop-shadow(0 0 0.125em #5f3900);
+    filter: drop-shadow(0 0 0.125em #5f3900);
+    font-size: 1em;
+    cursor: pointer;
+}
+input[type='range'], input[type='range']::-webkit-slider-runnable-track, input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+    box-sizing: border-box;
+    border: solid 1px #da974e;
+    width: 30em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    background: linear-gradient(90deg, #da974e 0.125em, rgba(0, 0, 0, 0) 0.125em) -1px 0 border-box #f5f8eb;
+    background-size: 5em 100%;
+}
+input[type='range']::-moz-range-track {
+    box-sizing: border-box;
+    border: solid 1px #da974e;
+    width: 30em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    background: linear-gradient(90deg, #da974e 0.125em, rgba(0, 0, 0, 0) 0.125em) -1px 0 border-box #f5f8eb;
+    background-size: 5em 100%;
+}
+input[type='range']::-ms-track {
+    box-sizing: border-box;
+    border: solid 1px #da974e;
+    width: 30em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    background: linear-gradient(90deg, #da974e 0.125em, rgba(0, 0, 0, 0) 0.125em) -1px 0 border-box #f5f8eb;
+    background-size: 5em 100%;
+    color: transparent;
+}
+input[type='range']::-webkit-slider-thumb {
+    position: relative;
+    margin-top: -2.25em;
+    box-sizing: border-box;
+    border: solid 1.5em transparent;
+    width: 5em;
+    height: 5em;
+    border-radius: 1.875em;
+    -webkit-transform: translateY(-0.25em) rotate(30deg) skewY(30deg) scaleX(0.86603);
+    transform: translateY(-0.25em) rotate(30deg) skewY(30deg) scaleX(0.86603);
+    box-shadow: inset -1px -1px #3a3534;
+    background: linear-gradient(-45deg, #3a3534 20%, #60858a 50%, #3a3534 50%, #3a3534 calc(50% + 1px), rgba(0, 0, 0, 0) calc(50% + 1px)) no-repeat content-box;
+    -webkit-filter: drop-shadow(0 0 #3a3534);
+    filter: drop-shadow(0 0 #3a3534);
+}
+input[type='range']::-moz-range-thumb {
+    box-sizing: border-box;
+    border: solid 1.5em transparent;
+    width: 5em;
+    height: 5em;
+    border-radius: 1.875em;
+    transform: translateY(-0.25em) rotate(30deg) skewY(30deg) scaleX(0.86603);
+    box-shadow: inset -1px -1px #3a3534;
+    background: linear-gradient(-45deg, #3a3534 20%, #60858a 50%, #3a3534 50%, #3a3534 calc(50% + 1px), rgba(0, 0, 0, 0) calc(50% + 1px)) no-repeat content-box;
+    filter: drop-shadow(0 0 #3a3534);
+}
+input[type='range']::-ms-thumb {
+    box-sizing: border-box;
+    border: solid 1.5em transparent;
+    width: 5em;
+    border-radius: 1.875em;
+    transform: translateY(-0.25em) rotate(30deg) skewY(30deg) scaleX(0.86603);
+    box-shadow: inset -1px -1px #3a3534;
+    background: linear-gradient(-45deg, #3a3534 20%, #60858a 50%, #3a3534 50%, #3a3534 52%, rgba(0, 0, 0, 0) 52%) no-repeat content-box;
+    filter: drop-shadow(0 0 #3a3534);
+}
+input[type='range']::-ms-fill-lower, input[type='range']::-ms-tooltip {
+    display: none;
+}
+input[type='range']::-webkit-slider-thumb:before, input[type='range'] /deep/ #thumb:before {
+    position: absolute;
+    width: 2em;
+    -webkit-transform: scaleX(1.1547) skewY(-30deg) rotate(-30deg) translateY(37%);
+    transform: scaleX(1.1547) skewY(-30deg) rotate(-30deg) translateY(37%);
+    background: linear-gradient(#ffffff, #ffffff) no-repeat 50% 20%, radial-gradient(circle, rgba(0, 0, 0, 0) 0.25em, #ffffff 0.25em, #ffffff 0.375em, rgba(0, 0, 0, 0) 0.375em) no-repeat;
+    background-size: .125em 25%, 100% 86%;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    content: '';
+}
+
+.number-label{
+    font-size:60px;
+    height: 60px;
+    width: 60px;
+    margin: 0 20px;
+    color: brown;
+    cursor: pointer;
+}
+
+#player-count-list{
+    margin-top: 20px;
+}
+
+#player-count-list i{
+    color: #BF6F30;
+    background: transparent;
+    border: 3px solid gold;
+}
+
+/* Иконки */
+#btn-back-to-game-list{
+    float: right;
+}
+
+#loglog{
+    text-align: right;
+}

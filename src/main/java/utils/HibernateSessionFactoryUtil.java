@@ -15,7 +15,7 @@ public class HibernateSessionFactoryUtil {
             try {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(RaceEntity.class);
-//                configuration.addAnnotatedClass(CharacterEntity.class);
+                configuration.addAnnotatedClass(CharacterEntity.class);
                 configuration.addAnnotatedClass(ClazzEntity.class);
 //                configuration.addAnnotatedClass(EffectEntity.class);
 //                configuration.addAnnotatedClass(FeatureEntity.class);
@@ -27,6 +27,7 @@ public class HibernateSessionFactoryUtil {
 //                configuration.addAnnotatedClass(RacetypeEntity.class);
 //                configuration.addAnnotatedClass(SkillEntity.class);
                 configuration.addAnnotatedClass(UsersEntity.class);
+                configuration.addAnnotatedClass(LobbyEntity.class);
 //                configuration.addAnnotatedClass(WeaponEntity.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
