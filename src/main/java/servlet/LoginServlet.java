@@ -17,7 +17,15 @@ public class LoginServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws java.io.IOException{
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
-        if(udao.findByName(login)!=null && udao.findByName(login).getUserpass().equals(pass)) response.sendRedirect("home.jsp");
-        else response.getWriter().append("Wrong password or username");
+        try {
+            if (udao.findByName(login) != null && udao.findByName(login).getUserpass().equals(pass))
+                response.sendRedirect("home.jsp");
+            else response.getWriter().append("Wrong password or username");
+        } catch(Exception e) {
+            request.setAttribute("error", "err");
+            try {
+                request.getRequestDispatcher("auto.jsp").forward(request, response);
+            } catch(Exception ex){e.printStackTrace();}
+        }
     }
 }

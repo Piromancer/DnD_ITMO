@@ -85,10 +85,10 @@
                                                     <label class="header-lobby-param">Количество денег:</label>
                                                     <label id="char-money" class="lobby-param"></label>
                                                 </div>
-                                                <div class="lobby-param-row">
-                                                    <label class="header-lobby-param">Максимальный вес:</label>
-                                                    <label class="lobby-param"><span id="char-maxWeight"></span> кг</label>
-                                                </div>
+                                                <%--<div class="lobby-param-row">--%>
+                                                    <%--<label class="header-lobby-param">Максимальный вес:</label>--%>
+                                                    <%--<label class="lobby-param"><span id="char-maxWeight"></span> кг</label>--%>
+                                                <%--</div>--%>
                                             </div>
                                         </div>
                                         <div id="player-game-info"></div>
@@ -110,7 +110,7 @@
                             <div class="col-md-6">
                                 <div class="info-form">
                                     <div id="create-new-game-form"><!--TODO-->
-                                        <form id="new-game-form" action="lobby">
+                                        <form id="new-game-form" method="post" action="game_init">
                                             <div class="form-group">
                                                 <h3 class="header-form header-form-sub">Название игры</h3>
                                                 <div class="lobby-input-group">
@@ -130,17 +130,24 @@
                                                             <label class="number-label" style="">3</label>
                                                             <label class="number-label" style="">4</label>
                                                         </div>
-
                                                     </div>
-
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <h3 class="header-form header-form-sub">Список персонажей</h3>
+                                                <div class="lobby-input-group js">
+                                                    <div>
+                                                        <input type="text" name="char1" id="char1" placeholder="Первый персонаж">
+                                                        <input type="text" name="char2" id="char2" placeholder="Второй персонаж">
+                                                        <input type="text" name="char3" id="char3" placeholder="Третий персонаж">
+                                                        <input type="text" name="char4" id="char4" placeholder="Четвертый персонаж">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h4 class="header-form header-form-sub">Описание</h4>
                                                 <div class="lobby-input-group">
-                                                    <textarea id="description" name="description" rows="4" cols="50"
-                                                              minlength="2" placeholder="Введите описание игры">
-                                                    </textarea>
+                                                    <textarea id="description" name="description" rows="4" cols="50" draggable="false"></textarea>
                                                 </div>
                                             </div>
                                             <table width="100%"><tr>

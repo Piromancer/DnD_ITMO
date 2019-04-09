@@ -20,6 +20,11 @@ public class CharacterDAO extends DAO<CharacterEntity> {
         return session.find(CharacterEntity.class, id);
     }
 
+    public CharacterEntity findByName(String name){
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        return session.createQuery("SELECT a FROM CharacterEntity a WHERE a.charactername = :name", CharacterEntity.class).setParameter("name",name).getSingleResult();
+    }
+
     public void addCharacter(CharacterEntity ce){
         save(ce);
     }

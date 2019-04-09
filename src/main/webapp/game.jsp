@@ -54,6 +54,7 @@
                             <img src="resources/images/race/молот_шит_гном.jpg" class="photobox__preview" id="user-avatar2">
                         </div>
                         <div class="description">
+                            <%%>
                             <p>${param["persname1"]}</p>
                             <p>${param["cond"]}</p>
                         </div>
@@ -203,14 +204,15 @@
     </div>
 </div>
 
-<div id="shadowing" style="display: none;">
+<div id="shadowing" >
+    <%--style="display: none;"--%>
     <div id="pers_info">
         <div id="pers_info_main">
             <p></p>
             <p class="info_header">Информация о персонаже</p>
             <p id="pers_info_gamer">Игрок: </p>
-            <p id="pers_info_pers">Персонаж: </p>
-            <p id="pers_info_cond">Состояние: </p>
+            <p id="pers_info_pers">Персонаж: <%out.print(request.getAttribute("char1name"));%></p>
+            <%--<p id="pers_info_cond">Состояние: </p>--%>
             <p id="pers_info_level">Уровень: </p>
             <p id="pers_info_race">Раса: </p>
             <p id="pers_info_class">Класс: </p>
